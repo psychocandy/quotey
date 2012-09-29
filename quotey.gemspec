@@ -4,8 +4,8 @@ require File.expand_path('../lib/quotie/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Amir Friedman"]
   gem.email         = ["amirf@null.co.il"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Quotey - A gem to generate random quotes}
+  gem.summary       = %q{Generate random quotes for fun & profit}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)

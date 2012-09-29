@@ -1,11 +1,11 @@
-require 'Quotie'
+require 'Quotey'
 
-describe Quotie::Quoter do
+describe Quotey::Quoter do
 
   # it { should respond_to(:get_quote) }
   # it { should respond_to(:data) }
 
-  let(:quoter) { Quotie::Quoter.new }
+  let(:quoter) { Quotey::Quoter.new }
 
   it "returns a quote" do
     quoter.get_quote.should_not be_nil
@@ -14,8 +14,8 @@ describe Quotie::Quoter do
   it "raises NoDataFile exception if a non-existent file is given" do
     file = ('a'..'z').to_a.shuffle[0,10].join("") << ".txt"
     expect {
-      Quotie::Quoter.new(file)
-    }.to raise_error Quotie::NoDataFile
+      Quotey::Quoter.new(file)
+    }.to raise_error Quotey::NoDataFile
   end
 
 
