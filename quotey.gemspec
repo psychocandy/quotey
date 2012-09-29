@@ -2,7 +2,7 @@
 require File.expand_path('../lib/quotey/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Amir Friedman"]
+  gem.authors       = ["psychocandy"]
   gem.email         = ["amirf@null.co.il"]
   gem.description   = %q{Quotey - A gem to generate random quotes}
   gem.summary       = %q{Generate random quotes for fun & profit}
