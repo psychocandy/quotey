@@ -1,24 +1,39 @@
 # Quotey
 
-TODO: Write a gem description
+A gem for generating random quotes
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'quotey'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install quotey
 
 ## Usage
 
-TODO: Write usage instructions here
+### Basic usage
+
+	my_quote_object = Quotey::Quoter.new
+	my_quote_object.get_quote
+	=> "\"In the depths of winter I finally learned there was in me an invincible summer.\" - Albert Camus"
+
+### Custom behavior 
+
+Quotey can receive an options hash:
+
+* :file
+* :no_repeat
+
+#### Using Different file
+
+	my_quote_object = Quotey::Quoter.new(file: "/path/to/my/text/file.txt")
+
+Lines are delimited per \n.
+
+#### No repeating
+
+Want to make sure you get a fresh quote everytime? Worry not!
+
+	my_quote_object = Quotey::Quoter.new(no_repeat: true)
+	
+Note that once Quotey finishes the list it re-reads the file that was given during the instantiation.
 
 ## Contributing
 
