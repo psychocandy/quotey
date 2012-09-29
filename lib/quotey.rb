@@ -1,4 +1,4 @@
-require "quotie/quoter"
+require "quotey/quoter"
 
-module Quotie 
+module Quotey 
 end

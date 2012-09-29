@@ -1,4 +1,4 @@
-module Quotie
+module Quotey
 
   class NoDataFile < StandardError; end
 

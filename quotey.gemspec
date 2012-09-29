@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/quotie/version', __FILE__)
+require File.expand_path('../lib/quotey/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Amir Friedman"]
@@ -11,9 +11,9 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "quotie"
+  gem.name          = "quotey"
   gem.require_paths = ["lib"]
-  gem.version       = Quotie::VERSION
+  gem.version       = Quotey::VERSION
 
   gem.add_development_dependency "rspec", "~> 2.11"
 end

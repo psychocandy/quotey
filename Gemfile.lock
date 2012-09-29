@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    quotie (0.0.1)
+    quotey (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -20,5 +20,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  quotie!
+  quotey!
   rspec (~> 2.11)
