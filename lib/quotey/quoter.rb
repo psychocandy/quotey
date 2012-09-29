@@ -3,21 +3,22 @@ module Quotey
   class NoDataFile < StandardError; end
 
   class Quoter
-    attr_reader :data, :size, :no_repeat
+    attr_reader :data, :size, :no_repeat, :data_file
 
-    def initialize(quotes_source = nil, options = {})
-      @source_file = quotes_source.nil? || quotes_source == :default_file ? File.join(File.dirname(__FILE__), 'misc_quotes.txt') : quotes_source
-      if File.exist? @source_file
-        @data = File.open(@source_file,"r").readlines.map{ |line| line.chomp }
-        @size = @data.size
+    def initialize(options = {})
+      @data_file = options[:file].nil? ? File.join(File.dirname(__FILE__), 'misc_quotes.txt') : options[:file]
+      if File.exist? @data_file
+        read_data_file
         set_options(options)
       else
-        raise NoDataFile, "Cannot find quotes data file - #{quotes_source}"
+        raise NoDataFile, "Cannot find quotes data file - #{options[:file]}"
       end
     end
 
     def get_quote
       if @no_repeat
+        read_data_file if @size == 0
+
         index = rand(@size)
         @size -= 1
         @data.delete_at index
@@ -31,6 +32,10 @@ module Quotey
       @no_repeat = options[:no_repeat] ? true : false
     end
 
+    def read_data_file
+      @data = File.open(@data_file,"r").readlines.map{ |line| line.chomp }
+      @size = @data.size
+    end
   end
 
 end

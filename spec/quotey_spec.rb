@@ -2,18 +2,21 @@ require 'Quotey'
 
 describe Quotey::Quoter do
 
+  before(:all) do
+    @local_path = File.join(File.dirname(__FILE__), 'misc_quotes.txt')
+  end
 
   describe "basic behavior" do
     let(:quoter) { Quotey::Quoter.new }
     it "raises NoDataFile exception if a non-existent file is given" do
-      file = ('a'..'z').to_a.shuffle[0,10].join("") << ".txt"
+      random_filename = ('a'..'z').to_a.shuffle[0,10].join("") << ".txt"
       expect {
-        Quotey::Quoter.new(file)
+        Quotey::Quoter.new(file: random_filename)
       }.to raise_error Quotey::NoDataFile
     end
 
     it "reads the default file" do
-      default_path = local_file = File.join(File.dirname(__FILE__), '..', 'lib', 'quotey', 'misc_quotes.txt')
+      default_path = File.join(File.dirname(__FILE__), '..', 'lib', 'quotey', 'misc_quotes.txt')
       size = File.open(default_path,"r").readlines.count
       quoter.size.should == size
     end
@@ -24,7 +27,8 @@ describe Quotey::Quoter do
   end
 
   context "when no_repeat is given" do
-    let(:quoter) { Quotey::Quoter.new(:default_file, no_repeat: true) }
+
+    let(:quoter) { Quotey::Quoter.new(file: @local_path, no_repeat: true) }
 
     it "sets no_repeat to true" do
       quoter.no_repeat.should be_true
@@ -43,12 +47,20 @@ describe Quotey::Quoter do
       quoter.get_quote.should_not be_nil
       quoter.get_quote.class.should == String
     end
+
+    it "starts again when it reaches zero" do
+      loop do
+        puts quoter.get_quote
+        break if quoter.size == 0
+      end
+      quoter.get_quote
+      quoter.size.should > 0
+    end
   end
 
   context "when custom file is given" do
     before(:all) do
-      @local_path = File.join(File.dirname(__FILE__), 'misc_quotes.txt')
-      @quoter = Quotey::Quoter.new @local_path
+      @quoter = Quotey::Quoter.new file: @local_path
     end
 
     it "reads all the quotes from a custom file" do
