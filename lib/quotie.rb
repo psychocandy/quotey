@@ -1,1 +1,4 @@
-require "quotie/quote"
+require "quotie/quoter"
+
+module Quotie 
+end
