@@ -12,7 +12,7 @@ OptionParser.new do |opts|
 	opts.on("-u","--[no-]repeat","Don't repeat quotes") do |u|
 		options[:no_repeat] = u
 	end
-	opts.on("-n NUMBER","--num NUMBER",Integer,"specify number of qoutes to generate") do |n|
+	opts.on("-n NUMBER","--num NUMBER",Integer,"specify number of quotes to generate") do |n|
 		options[:amount] = n
 	end
 	opts.on_tail("-h", "--help", "Show Help") do
