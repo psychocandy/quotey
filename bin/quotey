@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'quotey'
+require 'optparse'
+
+options = {}
+options[:amount] = 1
+OptionParser.new do |opts|
+  opts.on("-f", "--file FILENAME", "File to import quotes from") do |file|
+    options[:file] = file
+  end
+	opts.on("-u","--[no-]repeat","Don't repeat quotes") do |u|
+		options[:no_repeat] = u
+	end
+	opts.on("-n NUMBER","--num NUMBER",Integer,"specify number of qoutes to generate") do |n|
+		options[:amount] = n
+	end
+	opts.on_tail("-h", "--help", "Show Help") do
+		puts opts
+		exit
+	end
+end.parse!
+
+my_quote_object = Quotey::Quoter.new(options)
+options[:amount].times do
+	puts my_quote_object.get_quote
+end
+
