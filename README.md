@@ -35,6 +35,12 @@ Want to make sure you get a fresh quote everytime? Worry not!
 	
 Note that once Quotey finishes the list it re-reads the file that was given during the instantiation.
 
+
+## Future plans / TODO
+* Consider using Thor for the CLI interface
+* Consider switching the class interface to class methods/variables
+* CLI testing (using Aruba or RSpec)
+
 ## Contributing
 
 1. Fork it
