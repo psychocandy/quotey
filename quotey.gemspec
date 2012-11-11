@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
   gem.version       = Quotey::VERSION
 
   gem.add_development_dependency "rspec", "~> 2.11"
+  gem.add_development_dependency "rake"
 end
